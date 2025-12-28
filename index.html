@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doom Shroom Explode</title>
+  <link rel="stylesheet" href="./resources/css/index.css">
+  <style>
+  :root {
+    font-size: 16px;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+  }
+
+  h1 {
+    font-size: 4rem;
+    text-align: center;
+    margin: 2% 0;
+  }
+
+  p {
+    font-size: 1.25rem;
+  }
+
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    padding: 2%;
+  }
+
+  img {
+    width: 50%;
+    max-width: 400px;
+    height: auto;
+    margin: 2% 0;
+  }
+
+  button {
+    margin-top: 2%;
+    padding: 1.25rem 2.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(to bottom, #6fd85f 0%, #4CAF50 50%, #3e8e41 100%);
+    border: 1px solid #2e7031;
+    border-radius: 0.75rem;
+    box-shadow: inset 0 0.0625rem 0 rgba(255,255,255,0.6), 
+                0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+    text-shadow: 0 -0.0625rem 0.0625rem rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
+    pointer-events: none;
+  }
+
+  button:hover {
+    background: linear-gradient(to bottom, #7fec6f 0%, #5fdc58 50%, #45a049 100%);
+  }
+
+  .red-button {
+    background: linear-gradient(to bottom, #ff4c4c 0%, #d93636 50%, #b22222 100%);
+    border: 1px solid #8b1a1a;
+  }
+
+  .red-button:hover {
+    background: linear-gradient(to bottom, #ff6b6b 0%, #e74c3c 50%, #c0392b 100%);
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    button {
+      font-size: 1.2rem;
+      padding: 1rem 2rem;
+    }
+
+    img {
+      width: 80%;
+    }
+  }
+</style>
+
+<script>
+let isPlaying = false;
+
+function toggleGangnam() {
+  const img = document.getElementById("image");
+  const audio = document.getElementById("myAudio");
+  const button = document.getElementById("clickme");
+
+  if (!isPlaying) {
+    /* Start */
+    img.src = "./resources/images/dspvz.gif";
+    audio.currentTime = 0;
+    audio.loop = true;
+    audio.playbackRate = 1.25; /* speed up audio */
+    audio.play();
+    button.textContent = "Stop!";
+    button.classList.add("red-button"); 
+  } else {
+    /* Stop */
+    img.src = "./resources/images/dspvz.png";
+    audio.pause();
+    audio.currentTime = 0;
+    audio.playbackRate = 1; /* speed reset */
+    button.textContent = "Explode!";
+    button.classList.remove("red-button");
+  }
+
+  isPlaying = !isPlaying;
+}
+</script>
+
+</head>
+
+<body>
+  <div class="banner center">
+    <h1>Doom Shroom Explode</h1>
+
+    <img id="image" src="./resources/images/dspvz.png" alt="Peashooter Image" />
+
+    <audio id="myAudio">
+      <source src="./resources/audio/gs.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+    <button id="clickme" onclick="toggleGangnam();">Explode!</button>
+  </div>
+</body>
+</html>

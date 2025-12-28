@@ -1,0 +1,71 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Stops page from scrolling. */
+}
+
+body {
+  background-image: url(./bg2.jpg); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner {
+  text-align: center;
+  padding: 20px;
+  transform: translateY(-20px);
+}
+
+h1 {
+  font-family: "Segoe UI", "Trebuchet MS", "Helvetica Neue", sans-serif;
+  font-size: 4em;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+
+  /* Glass effect */
+  background: linear-gradient(to bottom, #e0f7ff 0%, #a0e0ff 35%, #38b0de 70%, #007acc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 1px 1px rgb(255, 255, 255),
+    0 2px 2px rgba(0, 0, 0, 0.807),
+    0 4px 6px rgba(0, 0, 0, 0.8);
+
+  transform: perspective(300px) rotateX(3deg);
+}
+#image {
+  transform: translateX(0px); /* move image right */
+}
+/* Mobile size fix */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5em;
+    margin-top: 15px;
+  }
+/* Move image up */
+  #image {
+    display: block;
+    margin: -110px auto 0 auto;
+    transform: translateX(17px);
+  }
+
+  #clickme {
+    margin-top: 25px; /* lower number moves button up */
+  }
+}
+.red-button {
+  background: linear-gradient(to bottom, #ff4d4d 0%, #cc0000 50%, #990000 100%);
+  border: 1px solid #800000;
+}
+
+.red-button::before {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), transparent);
+}
